@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "app.google.recipe"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "app.google.recipe"
