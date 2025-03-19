@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.google.dagger.hilt)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -40,6 +41,7 @@ android {
 dependencies {
 
     implementation(project(":feature:search:domain"))
+    implementation(project(":common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -55,7 +57,6 @@ dependencies {
     implementation(libs.ktor.json)
     implementation(libs.ktor.negotiation)
     implementation(platform(libs.ktor.bom))
-
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

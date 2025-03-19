@@ -13,5 +13,6 @@ data class SpecialCategoryResponse(
 
 @Serializable
 data class SpecialCategoriesResponse(
+    @SerialName("meals")
     val meals: List<SpecialCategoryResponse>
 )

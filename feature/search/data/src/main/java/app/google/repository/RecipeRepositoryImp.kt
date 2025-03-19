@@ -1,18 +1,19 @@
 package app.google.repository
 
-import app.google.RecipeApiService
+import app.google.CategoryApiService
 import app.google.model.Categories
 import app.google.model.SpecialCategories
 import app.google.model.getCategories
+import javax.inject.Inject
 
-class RecipeRepositoryImp(
-    private val recipeApiService: RecipeApiService
+class RecipeRepositoryImp @Inject constructor(
+    private val categoryApiService: CategoryApiService
 ) : RecipeRepository {
     override suspend fun getCategories(): Categories {
-        return recipeApiService.getCategories().getCategories()
+        return categoryApiService.getCategories().getCategories()
     }
 
     override suspend fun getSpecialCategory(categoryName: String): SpecialCategories {
-        return recipeApiService.getSpecialCategory(categoryName = categoryName).SpecialCategories()
+        return categoryApiService.getSpecialCategory(categoryName = categoryName).SpecialCategories()
     }
 }

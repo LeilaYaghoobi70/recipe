@@ -1,12 +1,10 @@
-package app.google.di
-
+package app.google.common.di
 
 import android.util.Log
-import app.google.RecipeApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.HttpTimeout
@@ -23,13 +21,10 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import javax.inject.Singleton
 
-
-private const val NETWORK_TIME_OUT = 6_000L
-
+private const val NETWORK_TIME_OUT = 10_000L
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
 
     @Provides
@@ -37,13 +32,9 @@ class NetworkModule {
         return httpClientAndroid
     }
 
-    @Provides
-    @Singleton
-    fun provideApiService(httpClient: HttpClient): RecipeApiService {
-        return RecipeApiService(httpClient)
-    }
 
     private val httpClientAndroid = HttpClient(Android) {
+
         install(ContentNegotiation) {
             json(
                 Json {
@@ -64,7 +55,9 @@ class NetworkModule {
 
         Logging {
             logger = object : Logger {
-                override fun log(message: String) { Log.i("Logger Ktor =>", message) }
+                override fun log(message: String) {
+                    Log.i("Logger Ktor =>", message)
+                }
             }
             level = LogLevel.ALL
         }

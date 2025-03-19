@@ -6,13 +6,18 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
-activityCompose = "1.10.0"
-composeBom = "2024.04.01"
+activityCompose = "1.10.1"
+composeBom = "2025.03.00"
 appcompat = "1.7.0"
 material = "1.12.0"
 jetbrainsKotlinJvm = "2.0.0"
 ktorVersion = "3.1.1"
 hilt = "2.51.1"
+lifecycleViewModel = "2.8.7"
+hilt-navigation-fragment = "1.2.0"
+nav_version = "2.8.9"
+navigationCompose = "1.2.0"
+plugin-serialization = "2.1.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,8 +35,11 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-lifecycle-viewModel = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewModel"}
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "nav_version" }
+androidx-navigation-navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version.ref = "nav_version"}
+androidx-navigation-compose = {group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "navigationCompose"}
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-
 
 ktor-android ={ group = "io.ktor", name = "ktor-client-android", version.ref = "ktorVersion"}
 ktor-core = { group = "io.ktor",name ="ktor-client-core", version.ref = "ktorVersion"}
@@ -42,10 +50,10 @@ ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = 
 ktor-gson =  {group = "io.ktor", name = "ktor-client-gson", version.ref = "ktorVersion"}
 ktor-bom = {group = "io.ktor" ,name = "ktor-bom", version.ref = "ktorVersion"}
 
-
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-android-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt"}
+hilt-navigation-fragment = { group = "androidx.hilt", name = "hilt-navigation-fragment", version.ref = "hilt-navigation-fragment"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -56,8 +64,10 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrai
 
 kotlin-kapt = { id = "kotlin-kapt" }
 java-library = { id = "java-library" }
-google-dagger-hilt = { id = "com.google.dagger.hilt.android" }
+kotlinx-serialization = {id = "kotlinx-serialization"}
+kotlin-plugin-serialization = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "plugin-serialization" }
 
+google-dagger-hilt = { id = "com.google.dagger.hilt.android" }
 dagger-hilt-android= { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 
