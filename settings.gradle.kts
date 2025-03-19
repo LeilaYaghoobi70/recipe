@@ -21,10 +21,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "Recipe"
 include(":app")
-include(":feature:search:presenter")
-include(":feature:search:domain")
-include(":feature:search:data")
-include(":feature:detail:presenter")
-include(":feature:detail:domain")
-include(":feature:detail:data")
+include(":feature:category:presenter")
+include(":feature:category:domain")
+include(":feature:category:data")
+include(":feature:meal:presenter")
+include(":feature:meal:domain")
+include(":feature:meal:data")
 include(":common")

@@ -45,12 +45,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:search:domain"))
-    implementation(project(":feature:search:data"))
-    implementation(project(":feature:search:presenter"))
-    implementation(project(":feature:detail:domain"))
-    implementation(project(":feature:detail:data"))
-    implementation(project(":feature:detail:presenter"))
+    implementation(project(":feature:category:domain"))
+    implementation(project(":feature:category:data"))
+    implementation(project(":feature:category:presenter"))
+    implementation(project(":feature:meal:domain"))
+    implementation(project(":feature:meal:data"))
+    implementation(project(":feature:meal:presenter"))
 
 
     implementation(libs.androidx.core.ktx)

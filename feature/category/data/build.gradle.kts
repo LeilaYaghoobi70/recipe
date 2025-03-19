@@ -3,11 +3,11 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.google.dagger.hilt)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
-    namespace = "app.google.presenter"
+    namespace = "app.google.data"
     compileSdk = 35
 
     defaultConfig {
@@ -31,34 +31,33 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     kapt {
         correctErrorTypes = true
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
-    implementation(project(":feature:search:domain"))
+
+    implementation(project(":feature:category:domain"))
+    implementation(project(":common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    kapt(libs.hilt.android.compiler)
-    implementation(libs.hilt.android)
+    implementation(libs.ktor.android)
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.serialization)
+    implementation(libs.ktor.logging)
+    implementation(libs.ktor.json)
+    implementation(libs.ktor.negotiation)
+    implementation(platform(libs.ktor.bom))
 
-    implementation(libs.androidx.lifecycle.viewModel)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 }
