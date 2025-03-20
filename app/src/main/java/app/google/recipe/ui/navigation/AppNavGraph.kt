@@ -4,9 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
 import app.google.presenter.SearchScreen
-import app.google.presenter.SearchViewModel
+import app.google.presenter.CategoryViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
 
 object Routes {
@@ -18,7 +17,7 @@ object Routes {
 fun AppNavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Routes.NAVIGATION_CATEGORY) {
         composable(Routes.NAVIGATION_CATEGORY) {
-            val loginViewModel: SearchViewModel = hiltViewModel()
+            val loginViewModel: CategoryViewModel = hiltViewModel()
             SearchScreen(loginViewModel)
         }
     }

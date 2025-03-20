@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":feature:category:domain"))
+    implementation(project(":common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -59,6 +60,8 @@ dependencies {
 
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
-
     implementation(libs.androidx.lifecycle.viewModel)
+
+    implementation(libs.glide)
+    implementation(libs.landscapist.glide)
 }
