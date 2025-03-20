@@ -1,4 +1,7 @@
 package app.google.presenter.detailCateogryScreen.arch
 
-class CategoryMealState {
-}
+import app.google.model.MealInstruction
+
+data class CategoryMealState(
+    val mealInstruction: MealInstruction? = null,
+)

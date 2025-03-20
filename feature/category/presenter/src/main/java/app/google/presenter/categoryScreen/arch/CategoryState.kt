@@ -1,4 +1,4 @@
-package app.google.presenter.arch
+package app.google.presenter.categoryScreen.arch
 
 import app.google.model.SpecialCategories
 

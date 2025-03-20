@@ -64,4 +64,8 @@ dependencies {
 
     implementation(libs.glide)
     implementation(libs.landscapist.glide)
+
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
 }

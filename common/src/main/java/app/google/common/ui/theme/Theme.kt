@@ -14,7 +14,7 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun RecipeTheme(
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

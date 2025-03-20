@@ -1,4 +1,7 @@
 package app.google.presenter.categoryScreen.arch
 
-class CategoryEvent {
+sealed class CategoryEvent {
+    data class GetSpecialCategory(
+       val  name: String
+    ) : CategoryEvent()
 }

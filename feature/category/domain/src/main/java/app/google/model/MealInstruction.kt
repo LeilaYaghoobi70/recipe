@@ -1,4 +1,4 @@
-package app.google.domain
+package app.google.model
 
 data class MealInstruction(
     val id: String,
@@ -13,7 +13,3 @@ data class MealInstruction(
     val source: String? = null
 )
 
-
-data class Meal(
-    val mealInstructions: List<MealInstruction>
-)

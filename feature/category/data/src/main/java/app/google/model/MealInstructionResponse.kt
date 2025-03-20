@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MealResponse(
+data class MealInstructionResponse(
     @SerialName("idMeal") val id: String,
     @SerialName("strMeal") val name: String,
     @SerialName("strMealAlternate") val alternateName: String? = null,
@@ -16,3 +16,9 @@ data class MealResponse(
     @SerialName("strYoutube") val youtubeUrl: String? = null,
     @SerialName("strSource") val source: String? = null
 )
+
+@Serializable
+data class MealResponse(
+    val meals: List<MealInstructionResponse>
+)
+

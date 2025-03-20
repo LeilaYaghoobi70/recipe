@@ -1,4 +1,9 @@
 package app.google.presenter
 
-class MealViewModel {
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class MealViewModel @Inject constructor(): ViewModel() {
 }

@@ -13,3 +13,17 @@ fun SpecialCategoriesResponse.SpecialCategories(): SpecialCategories {
         }
     )
 }
+fun MealInstructionResponse.MealInstruction(): MealInstruction {
+    return MealInstruction(
+        id = id,
+        name = name,
+        alternateName = alternateName,
+        category = category,
+        area = area,
+        instructions = instructions,
+        thumbnail = thumbnail,
+        tags = tags,
+        youtubeUrl = youtubeUrl,
+        source = source
+    )
+}

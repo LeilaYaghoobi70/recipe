@@ -1,4 +1,7 @@
 package app.google.presenter.detailCateogryScreen.arch
 
-class DetailCategoryEvent {
+sealed class CategoryMealEvent {
+    data class GetCategoryMeal(
+        val categoryId: String
+    ) : CategoryMealEvent()
 }
