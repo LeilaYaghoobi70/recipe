@@ -1,8 +1,7 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.java.library)
+    id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 java {
@@ -12,13 +11,10 @@ java {
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_11
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
 
-dependencies{
-    implementation(project(":coreModule"))
-
-    implementation(libs.hilt.android.core)
+dependencies {
     implementation(libs.ktor.serialization)
 }

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.google.dagger.hilt)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -38,6 +39,10 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":common"))
+    implementation(project(":coreModule"))
+    implementation(project(":feature:meal:domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

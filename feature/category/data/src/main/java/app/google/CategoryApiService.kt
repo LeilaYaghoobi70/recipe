@@ -1,8 +1,8 @@
 package app.google
 
 
+import app.google.coremodule.networkModel.MealResponse
 import app.google.model.CategoriesResponse
-import app.google.model.MealResponse
 import app.google.model.SpecialCategoriesResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

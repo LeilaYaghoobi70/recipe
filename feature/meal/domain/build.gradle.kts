@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    id("java-library")
+    alias(libs.plugins.java.library)
     alias(libs.plugins.jetbrains.kotlin.jvm)
 }
 
@@ -14,4 +14,9 @@ kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_11
     }
+}
+
+dependencies {
+    implementation(project(":coreModule"))
+    implementation(libs.hilt.android.core)
 }

@@ -1,10 +1,10 @@
-package app.google.data
+package app.google.coremodule.networkModel
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Meal(
+data class MealInstructionResponse(
     @SerialName("idMeal") val id: String,
     @SerialName("strMeal") val name: String,
     @SerialName("strMealAlternate") val alternateName: String? = null,
@@ -19,5 +19,7 @@ data class Meal(
 
 @Serializable
 data class MealResponse(
-    val meals: List<Meal>
+    @SerialName("meals")
+    val meals: List<MealInstructionResponse>?
 )
+
