@@ -41,7 +41,6 @@ android {
 dependencies {
 
     implementation(project(":common"))
-    implementation(project(":coreModule"))
     implementation(project(":feature:meal:domain"))
 
     implementation(libs.androidx.core.ktx)

@@ -1,4 +1,4 @@
-package app.google.coremodule.businessModel
+package app.google.model
 
 data class MealInstruction(
     val id: String,

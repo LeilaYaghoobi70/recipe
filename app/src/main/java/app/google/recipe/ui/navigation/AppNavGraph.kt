@@ -1,37 +1,50 @@
 package app.google.recipe.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.navigation.compose.NavHost
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.hilt.navigation.compose.hiltViewModel
-import app.google.presenter.MealScreen
-import app.google.presenter.MealViewModel
-import app.google.presenter.mainCategoryScreen.MainScreen
+import androidx.navigation.navArgument
+import app.google.presenter.mainCategoryScreen.MainCategoryScreen
+import app.google.presenter.mainMealScreen.MainMealScreen
+
 
 object Routes {
-    const val NAVIGATION_TO_MAIL = "Mail"
-    const val NAVIGATION_CATEGORY = "category"
+    const val CATEGORY = "category"
+    const val MEAL = "meal/{mealId}"
+}
+
+object Arguments {
+    const val MEAL_ID = "mealId"
 }
 
 @Composable
-fun AppNavGraph(navHostController: NavHostController) {
-    NavHost(navController = navHostController, startDestination = Routes.NAVIGATION_CATEGORY) {
-        composable(Routes.NAVIGATION_CATEGORY) {
-            MainScreen(navigateToMail = {
-                navHostController.navigateToMail()
-            })
-        }
-        composable(Routes.NAVIGATION_TO_MAIL) {
-           val mealViewModel: MealViewModel = hiltViewModel()
-            MealScreen(mealViewModel = mealViewModel)
-        }
+fun AppNavGraph(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = Routes.CATEGORY) {
+        addCategoryScreen(navController)
+        addMealScreen()
     }
 }
 
-fun NavHostController.navigateToMail() {
-    navigate(Routes.NAVIGATION_TO_MAIL)
+
+private fun NavGraphBuilder.addCategoryScreen(navController: NavHostController) {
+    composable(route = Routes.CATEGORY) {
+        MainCategoryScreen(
+            navigateToMail = { mealId ->
+                navController.navigate("meal/$mealId")
+            }
+        )
+    }
 }
 
-
+private fun NavGraphBuilder.addMealScreen() {
+    composable(
+        route = Routes.MEAL,
+        arguments = listOf(navArgument(Arguments.MEAL_ID) { type = NavType.StringType })
+    ) { backStackEntry ->
+        val mealId = backStackEntry.arguments?.getString(Arguments.MEAL_ID) ?: ""
+        MainMealScreen(mealId)
+    }
+}

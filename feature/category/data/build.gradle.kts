@@ -42,7 +42,6 @@ dependencies {
 
     implementation(project(":feature:category:domain"))
     implementation(project(":common"))
-    implementation(project(":coreModule"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

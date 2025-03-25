@@ -17,6 +17,5 @@ kotlin {
 }
 
 dependencies {
-    implementation(project(":coreModule"))
     implementation(libs.hilt.android.core)
 }

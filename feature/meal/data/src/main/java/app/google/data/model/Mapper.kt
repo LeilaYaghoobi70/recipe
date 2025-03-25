@@ -1,7 +1,7 @@
-package app.google.coremodule.mapper
+package app.google.data.model
 
-import app.google.coremodule.businessModel.MealInstruction
-import app.google.coremodule.networkModel.MealInstructionResponse
+import app.google.model.MealInstruction
+
 
 fun MealInstructionResponse.toMealInstruction(): MealInstruction {
     return MealInstruction(

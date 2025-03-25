@@ -41,7 +41,6 @@ android {
 dependencies {
 
     implementation(project(":common"))
-    implementation(project(":coreModule"))
     implementation(project(":feature:meal:domain"))
 
 
@@ -65,4 +64,8 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.lifecycle.viewModel)
+
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
 }

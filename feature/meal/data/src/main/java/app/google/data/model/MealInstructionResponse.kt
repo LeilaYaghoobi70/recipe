@@ -1,4 +1,4 @@
-package app.google.coremodule.networkModel
+package app.google.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

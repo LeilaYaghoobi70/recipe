@@ -1,6 +1,7 @@
-package app.google.presenter
+package app.google.presenter.search
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,16 +25,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import app.google.coremodule.businessModel.MealInstruction
-import app.google.presenter.arch.MealEvent
+import app.google.model.MealInstruction
+import app.google.presenter.search.arch.SearchEvent
 import com.example.feature.search.SearchBar
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun MealScreen(
-    mealViewModel: MealViewModel
+fun SearchScreen(
+    searchViewModel: SearchViewModel,
+    navigateToMeal: (String) -> Unit
 ) {
-    val mealState by mealViewModel.state.collectAsState()
+    val mealState by searchViewModel.state.collectAsState()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -43,7 +44,7 @@ fun MealScreen(
     ) {
         SearchBar(
             onSearchQueryChanged = {
-                mealViewModel.handleEvent(MealEvent.Search(it))
+                searchViewModel.handleEvent(SearchEvent.Search(it))
             }
         )
         Spacer(modifier = Modifier.height(5.dp))
@@ -51,9 +52,12 @@ fun MealScreen(
             modifier = Modifier.weight(1F)
 
         ) {
-            items(mealState.mealInstruction ?: emptyList()) {
+            items(mealState.mealInstruction?.size ?: 0) {
                 Spacer(modifier = Modifier.height(5.dp))
-                MealInstructionItem(mealInstruction = it)
+                MealInstructionItem(
+                    mealInstruction = mealState.mealInstruction!![it],
+                    navigateToMeal = navigateToMeal,
+                )
             }
         }
     }
@@ -61,13 +65,17 @@ fun MealScreen(
 
 @Composable
 private fun MealInstructionItem(
-    mealInstruction: MealInstruction
+    mealInstruction: MealInstruction,
+    navigateToMeal: (String) -> Unit,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .size(120.dp)
             .background(Color.White)
+            .clickable {
+                navigateToMeal.invoke(mealInstruction.id)
+            }
     ) {
         GlideImage(
             imageModel = { mealInstruction.thumbnail },

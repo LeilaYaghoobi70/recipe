@@ -1,4 +1,4 @@
-package app.google.presenter.detailCateogryScreen
+package app.google.presenter.meal
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -21,17 +21,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import app.google.presenter.detailCateogryScreen.arch.CategoryMealEvent
+import app.google.presenter.meal.arch.MealEvent
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun CategoryMealScreen(
-    categoryMealViewModel: CategoryMealViewModel,
+fun MealScreen(
+    mealViewModel: MealViewModel,
     categoryId: String
 ){
-    val state by categoryMealViewModel.state.collectAsState()
+    val state by mealViewModel.state.collectAsState()
     LaunchedEffect(categoryId) {
-        categoryMealViewModel.handleEvent(CategoryMealEvent.GetCategoryMeal(categoryId))
+        mealViewModel.handleEvent(MealEvent.GetMeal(categoryId))
     }
     Box (
         contentAlignment = Alignment.Center

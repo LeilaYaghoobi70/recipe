@@ -1,9 +1,9 @@
-package app.google.presenter
+package app.google.presenter.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.google.presenter.arch.MealEvent
-import app.google.presenter.arch.MealState
+import app.google.presenter.search.arch.SearchEvent
+import app.google.presenter.search.arch.SearchState
 import app.google.usecase.MealInstruction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,22 +15,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MealViewModel @Inject constructor(
+class SearchViewModel @Inject constructor(
     private val mealInstruction: MealInstruction,
 ): ViewModel() {
 
-    private val _state = MutableStateFlow(MealState())
+    private val _state = MutableStateFlow(SearchState())
     val state = _state.stateIn(
         viewModelScope,
         SharingStarted.Eagerly,
-        MealState()
+        SearchState()
     )
 
 
-    fun handleEvent(mealEvent: MealEvent){
-        when(mealEvent){
-            is MealEvent.GetMeal -> TODO()
-            is MealEvent.Search -> (getMealInstruction(mealEvent.letter))
+    fun handleEvent(searchEvent: SearchEvent){
+        when(searchEvent){
+            is SearchEvent.Search -> (getMealInstruction(searchEvent.letter))
         }
 
     }

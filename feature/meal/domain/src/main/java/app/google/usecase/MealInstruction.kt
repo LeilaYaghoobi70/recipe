@@ -1,6 +1,7 @@
 package app.google.usecase
 
-import app.google.coremodule.businessModel.MealInstruction
+
+import app.google.model.MealInstruction
 import app.google.repository.MealRepository
 import javax.inject.Inject
 

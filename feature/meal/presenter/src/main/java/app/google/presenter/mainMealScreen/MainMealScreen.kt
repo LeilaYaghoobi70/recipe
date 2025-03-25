@@ -1,4 +1,4 @@
-package app.google.presenter.mainCategoryScreen
+package app.google.presenter.mainMealScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -7,11 +7,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import app.google.presenter.mainCategoryScreen.component.Toolbar
 
 @Composable
-fun MainCategoryScreen(
-    navigateToMail: (String) -> Unit,
+fun MainMealScreen(
+    mealId: String
 ) {
     val navController = rememberNavController()
     Column(
@@ -19,15 +18,9 @@ fun MainCategoryScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        Toolbar(
-            title = "Category",
-            navigateToMail = {
-                navigateToMail.invoke("")
-            }
-        )
         AppNavGraph(
             navController = navController,
-            navigateToDetail = navigateToMail
+            mealId = mealId
         )
     }
 }
