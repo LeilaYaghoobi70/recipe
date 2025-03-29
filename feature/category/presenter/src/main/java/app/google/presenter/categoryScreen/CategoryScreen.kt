@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.google.common.ui.theme.RecipeTheme
 import app.google.presenter.categoryScreen.arch.CategoryEvent
+import app.google.presenter.categoryScreen.component.CategoryBody
 import app.google.presenter.categoryScreen.component.CategoryView
 import app.google.presenter.categoryScreen.component.SpecialCategoryView
 
@@ -30,16 +31,15 @@ fun CategoryScreen(
                 .background(MaterialTheme.colorScheme.background)
         ) {
             Spacer(Modifier.height(12.dp))
-            CategoryView(
-                viewModelState.categories,
-                onCategoryClick = {
+            CategoryBody(
+                getCategories = {
                     viewModel.handleEvent(CategoryEvent.GetSpecialCategory(it))
-                }
-            )
-            Spacer(Modifier.height(12.dp))
-            SpecialCategoryView(
-                specialCategories = viewModelState.specialCategories,
+                },
                 navigateToDetail = navigateToDetail,
+                categories = viewModelState.categories,
+                specialCategories = viewModelState.specialCategories,
+                showCategoriesLoading = viewModelState.showCategoryLoading,
+                showSpecialCategoryLoading = viewModelState.showSpecialCategoryLoading,
             )
         }
     }

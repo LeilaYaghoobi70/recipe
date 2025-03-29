@@ -23,14 +23,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import app.google.model.SpecialCategories
 import app.google.model.SpecialCategory
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun SpecialCategoryView(
-    modifier: Modifier = Modifier.fillMaxSize(),
-    specialCategories: SpecialCategories,
+    modifier: Modifier = Modifier.fillMaxSize().padding(12.dp),
+    specialCategories: List<SpecialCategory>,
     navigateToDetail: (String) -> Unit,
 ) {
     LazyVerticalGrid(
@@ -39,10 +38,9 @@ fun SpecialCategoryView(
         horizontalArrangement = Arrangement.spacedBy(12.dp), // ✅ Space between columns
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        val items = specialCategories.specialCategories
-        items(items.size) { index ->
+        items(specialCategories.size) { index ->
             SpecialCategoryItem(
-                specialCategory = items[index],
+                specialCategory = specialCategories[index],
                 navigateToDetail = navigateToDetail
             )
         }

@@ -23,7 +23,7 @@ fun CategoryView(
     categories: List<Pair<String, Boolean>>,
     modifier: Modifier = Modifier
         .fillMaxWidth()
-        .padding(12.dp),
+        .padding(horizontal = 12.dp),
     onCategoryClick: (String) -> Unit
 ) {
     LazyRow(
@@ -33,7 +33,7 @@ fun CategoryView(
             CategoryItem(
                 value = categories[item],
                 onCategoryClick = onCategoryClick,
-                )
+            )
             Spacer(modifier = Modifier.padding(8.dp))
         }
     }
@@ -51,7 +51,8 @@ private fun CategoryItem(
                 width = 2.dp,
                 color = if (value.second) borderColor else Color.Transparent,
                 shape = CircleShape
-            ).clickable {
+            )
+            .clickable {
                 onCategoryClick(value.first)
             }
             .padding(horizontal = 15.dp, vertical = 2.dp),

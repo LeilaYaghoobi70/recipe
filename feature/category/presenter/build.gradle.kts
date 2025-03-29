@@ -39,6 +39,9 @@ android {
     buildFeatures {
         compose = true
     }
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
+    }
 }
 
 dependencies {
@@ -68,4 +71,38 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.navigation.compose)
     implementation(libs.androidx.navigation.compose)
+
+
+    // Kotest (For BDD-style testing)
+    testImplementation(libs.kotest.runner.junit5)
+    testImplementation(libs.kotest.assertions.core)
+    testImplementation(libs.kotest.framework.engine)
+
+    // JUnit 5 (For unit testing)
+    testImplementation(libs.junit.jupiter.api)
+    testRuntimeOnly(libs.junit.jupiter.engine)
+
+    // MockK (For mocking dependencies)
+    testImplementation(libs.mockk)
+
+    // Coroutines Testing (For ViewModel coroutine testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // Turbine (For Flow & StateFlow testing)
+    testImplementation(libs.turbine)
+
+    // AndroidX Core Testing (For LiveData and ViewModel testing)
+   // testImplementation("androidx.arch.core:core-testing:2.1.0")
+
+    // Espresso (For UI Testing if needed)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    // UI Testing (AndroidX)
+/*    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.runner)*/
+
+    // Compose UI Testing (If using Jetpack Compose)
+    androidTestImplementation(libs.ui.test.junit4)
+    implementation( libs.kotlin.reflect)
+
 }

@@ -6,8 +6,3 @@ data class SpecialCategory(
     val name: String,
     val thumbnail: String
 )
-
-
-data class SpecialCategories(
-    val specialCategories: List<SpecialCategory>
-)

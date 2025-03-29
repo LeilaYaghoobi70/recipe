@@ -7,10 +7,8 @@ fun CategoriesResponse.getCategories(): Categories {
     )
 }
 
-fun SpecialCategoriesResponse.SpecialCategories(): SpecialCategories {
-    return SpecialCategories(
-        meals.map {
+fun SpecialCategoriesResponse.SpecialCategories(): List<SpecialCategory> {
+    return meals.map {
             SpecialCategory(it.id, it.name, it.thumbnail)
         }
-    )
 }

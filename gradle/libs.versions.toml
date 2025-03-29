@@ -1,11 +1,21 @@
 [versions]
 agp = "8.7.3"
+androidxJunit = "1.2.1"
+coreTesting = "2.1.0"
+espressoCoreVersion = "3.6.1"
 glide = "4.16.0"
+junitJupiterApi = "5.11.0"
+junitJupiterEngine = "5.11.0"
+kotestAssertionsCore = "5.5.4"
+kotestFrameworkEngine = "5.5.4"
+kotestRunnerJunit5 = "5.5.4"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlinReflect = "2.0.0"
+kotlinxCoroutinesTest = "1.10.1"
 landscapistGlide = "2.2.10"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
@@ -17,12 +27,18 @@ ktorVersion = "3.1.1"
 hilt = "2.51.1"
 lifecycleViewModel = "2.8.7"
 hilt-navigation-fragment = "1.2.0"
+mockk = "1.13.5"
 nav_version = "2.8.9"
 navigationCompose = "1.2.0"
 plugin-serialization = "2.1.10"
+runner = "1.6.2"
+turbine = "1.0.0"
+uiTestJunit4 = "1.7.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -42,6 +58,13 @@ androidx-lifecycle-viewModel = {group = "androidx.lifecycle", name = "lifecycle-
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "nav_version" }
 androidx-navigation-navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version.ref = "nav_version"}
 androidx-navigation-compose = {group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "navigationCompose"}
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiterApi" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiterEngine" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotestAssertionsCore" }
+kotest-framework-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotestFrameworkEngine" }
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotestRunnerJunit5" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 landscapist-glide = { module = "com.github.skydoves:landscapist-glide", version.ref = "landscapistGlide" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
@@ -58,6 +81,9 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-android-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt"}
 hilt-navigation-fragment = { group = "androidx.hilt", name = "hilt-navigation-fragment", version.ref = "hilt-navigation-fragment"}
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -7,10 +7,8 @@ import app.google.presenter.categoryScreen.arch.CategoryState
 import app.google.usecase.GetCategories
 import app.google.usecase.GetSpecialCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,34 +19,40 @@ class CategoryViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CategoryState())
-    val state = _state.stateIn(
+    val state: StateFlow<CategoryState> = _state.stateIn(
         viewModelScope,
         SharingStarted.Eagerly,
         CategoryState()
     )
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, _ ->
+        _state.update {
+            it.copy(
+                showError = true
+            )
+        }
+    }
 
     init {
         initializeCategories()
     }
 
     fun handleEvent(event: CategoryEvent) {
-        when (event) {
-            is CategoryEvent.GetSpecialCategory -> loadSpecialCategory(event.name)
+        if (event is CategoryEvent.GetSpecialCategory) {
+            loadSpecialCategory(event.name)
         }
     }
 
     private fun initializeCategories() {
-        viewModelScope.launch {
+        viewModelScope.launch(exceptionHandler) {
+            _state.update { it.copy(showCategoryLoading = true, showSpecialCategoryLoading = true) }
+
             val categories = getCategories.invoke()
             val firstCategory = categories.meals.firstOrNull() ?: return@launch
-            val specialCategories = getSpecialCategory.invoke(firstCategory)
 
-            _state.update {
-                it.copy(
-                    categories = categories.meals.map { name -> name to (name == firstCategory) },
-                    specialCategories = specialCategories
-                )
-            }
+            _state.update { it.copy(categories = categories.meals.map { name -> name to (name == firstCategory) }) }
+
+            fetchSpecialCategory(firstCategory)
         }
     }
 
@@ -58,17 +62,22 @@ class CategoryViewModel @Inject constructor(
     }
 
     private fun updateSelectedCategory(categoryName: String) {
-        _state.update { state ->
-            state.copy(
-                categories = state.categories.map { (name, _) -> name to (name == categoryName) }
-            )
-        }
+        _state.update { it.copy(categories = it.categories.map { (name, _) -> name to (name == categoryName) }) }
     }
 
     private fun fetchSpecialCategory(categoryName: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(exceptionHandler) {
+            _state.update { it.copy(showSpecialCategoryLoading = true) }
+
             val specialCategory = getSpecialCategory.invoke(categoryName)
-            _state.update { it.copy(specialCategories = specialCategory) }
+
+            _state.update {
+                it.copy(
+                    specialCategories = specialCategory,
+                    showSpecialCategoryLoading = false,
+                    showCategoryLoading = false
+                )
+            }
         }
     }
 }
