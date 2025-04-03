@@ -59,7 +59,16 @@ The app follows **Clean Architecture** with modularization:
     - Using TOML-based catalogs to manage dependencies, versions, and other configurations in Gradle.
     - This allows centralized dependency version management and improves build reproducibility across different environments.
 ---
+## 📸 **Screenshots**
+Here are some screenshots of the app in action:
 
+<div style="display: flex; justify-content: space-between;">
+<img width="300" alt="Screenshot 1404-01-14 at 18 19 29" src="https://github.com/user-attachments/assets/6d1f8d44-a163-4c19-b092-c073e55260ae" />
+<img width="300" alt="Screenshot 1404-01-14 at 18 20 04" src="https://github.com/user-attachments/assets/c0babc5f-2cb3-4362-aab4-192c52b857f4" />
+ <img width="300" alt="Screenshot 1404-01-14 at 18 26 33" src="https://github.com/user-attachments/assets/1acefbc8-db49-4b54-b9ae-47aa06979382" />
+</div>
+
+---
 ## 🧪 **Testing with Kotest**
 We use **Kotest** to write **BDD-style tests** for `CategoryViewModel`.
 
