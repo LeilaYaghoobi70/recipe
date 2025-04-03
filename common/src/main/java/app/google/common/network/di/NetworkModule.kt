@@ -1,4 +1,4 @@
-package app.google.common.di
+package app.google.common.network.di
 
 import android.util.Log
 import dagger.Module
