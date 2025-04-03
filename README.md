@@ -54,6 +54,10 @@ The app follows **Clean Architecture** with modularization:
 - 🧪 [Kotest](https://kotest.io/) (BDD testing)
 - ✅ [Mockk](https://mockk.io/) (Mocking framework)
 
+### 🔹 **Configuration Management**
+- 📦 **[TOML for Gradle Dependency Catalogs](https://developer.android.com/build/migrate-to-catalogs)**:
+    - Using TOML-based catalogs to manage dependencies, versions, and other configurations in Gradle.
+    - This allows centralized dependency version management and improves build reproducibility across different environments.
 ---
 
 ## 🧪 **Testing with Kotest**
